@@ -23,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark w-full max-w-full overflow-x-hidden">
-      <body className="antialiased relative bg-[#060608] text-gray-100 min-h-screen w-full max-w-full overflow-x-hidden">
+    <html lang="en" className="light w-full max-w-full overflow-x-hidden">
+      <body className="antialiased relative bg-[#f7f9fa] text-[#1a2421] min-h-screen w-full max-w-full overflow-x-hidden">
         {/* Faint Film Grain Overlay */}
         <div className="noise-overlay" />
 
