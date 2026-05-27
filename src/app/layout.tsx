@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CursorGlow from "@/components/CursorGlow";
+import BackgroundSystem from "@/components/BackgroundSystem";
 
 export const metadata: Metadata = {
   title: "ScholarWeb — Map the Internet to Your Syllabus",
@@ -27,6 +28,9 @@ export default function RootLayout({
       <body className="antialiased relative bg-[#fcfbf9] text-[#2a302e] min-h-screen w-full max-w-full overflow-x-hidden">
         {/* Faint Film Grain Overlay */}
         <div className="noise-overlay" />
+
+        {/* Global animated background system */}
+        <BackgroundSystem />
 
         {/* Soft light spotlight tracking */}
         <CursorGlow />
