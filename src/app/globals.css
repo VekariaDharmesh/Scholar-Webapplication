@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-amber: #b45309;
-  --color-brand-amber-light: #fef3c7;
-  --color-brand-navy: #1e3a8a;
-  --color-brand-navy-dark: #0f172a;
-  --color-brand-green: #166534;
-  --color-brand-green-light: #dcfce7;
-  --color-dark-charcoal: #1a1a1a;
-  --color-card-border: #e6e4df;
-  --color-card-border-hover: #d1cfca;
-  --color-bg-cream: #faf9f6;
+  --color-brand-purple: #6366f1;
+  --color-brand-purple-light: rgba(99, 102, 241, 0.1);
+  --color-brand-blue: #3b82f6;
+  --color-brand-blue-light: rgba(59, 130, 246, 0.1);
+  --color-brand-green: #10b981;
+  --color-brand-green-light: rgba(16, 185, 129, 0.1);
+  --color-brand-amber: #f59e0b;
+  --color-brand-amber-light: rgba(245, 158, 11, 0.1);
+  --color-dark-graphite: #060608;
+  --color-card-border: rgba(255, 255, 255, 0.06);
+  --color-card-border-hover: rgba(255, 255, 255, 0.12);
   
   --animate-float-slow: float-slow 12s ease-in-out infinite;
   --animate-float-medium: float-medium 8s ease-in-out infinite;
   --animate-float-fast: float-fast 5s ease-in-out infinite;
   --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-purple: glow-purple 6s ease-in-out infinite;
   
   @keyframes float-slow {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -33,6 +36,14 @@
     0% { opacity: 0; transform: translateY(12px); }
     100% { opacity: 1; transform: translateY(0); }
   }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  @keyframes glow-purple {
+    0%, 100% { opacity: 0.12; filter: blur(80px); }
+    50% { opacity: 0.25; filter: blur(100px); }
+  }
 }
 
 /* 1. Global Box Sizing & Layout Resets */
@@ -47,11 +58,12 @@ html, body {
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
-  background-color: #faf9f6;
-  color: #1a1a1a;
+  background-color: #060608;
+  color: #f9fafb;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
   overflow-x: hidden !important;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Next.js Wrapper Overrides */
@@ -62,66 +74,71 @@ main, #__next, [data-reactroot], body > div {
   overflow-x: hidden !important;
 }
 
-/* Custom Selection style (amber highlights) */
+/* Custom Selection style (purple/blue highlights) */
 ::selection {
-  background: rgba(217, 119, 6, 0.15);
-  color: #b45309;
+  background: rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling - premium dark minimal */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #faf9f6;
+  background: #060608;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e6e4df;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d1cfca;
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* Notion/Linear Premium Paper Card Design */
-.paper-card {
-  background: #ffffff;
-  border: 1px solid #e6e4df;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
-  border-radius: 12px;
+/* Apple Vision Pro Glassmorphic UI Panel Design */
+.glass-panel {
+  background: rgba(13, 13, 16, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
 }
 
-.paper-card-hover:hover {
-  background: #ffffff;
-  border-color: #d1cfca;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
-  transform: translateY(-1px);
+.glass-panel-hover:hover {
+  background: rgba(16, 16, 20, 0.75);
+  border-color: rgba(99, 102, 241, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 12px rgba(99, 102, 241, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
-.text-gradient-amber-navy {
-  background: linear-gradient(135deg, #b45309 0%, #1e3a8a 100%);
+.text-gradient-purple-blue {
+  background: linear-gradient(135deg, #a5b4fc 0%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-amber-green {
-  background: linear-gradient(135deg, #b45309 0%, #166534 100%);
+.text-gradient-purple-pink {
+  background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Premium Dot-Matrix canvas background pattern */
+/* Premium low-opacity white dots matrix canvas background pattern */
 .bg-dot-matrix {
-  background-size: 24px 24px;
-  background-image: radial-gradient(#e6e4df 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-/* Subtly animated subtle layouts line grids */
-.layout-grid-line {
-  background-color: #e6e4df;
+/* Dynamic Mesh grid floor backdrop simulation */
+.grid-mesh {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-/* Cinematic Faint Grain Overlay (scaled down for crisp light theme contrast) */
+/* Cinematic Grain Overlay */
 .noise-overlay {
   position: fixed;
   top: 0;
@@ -131,7 +148,7 @@ main, #__next, [data-reactroot], body > div {
   width: 100%;
   height: 100%;
   content: "";
-  opacity: 0.007;
+  opacity: 0.015;
   z-index: 9999;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");

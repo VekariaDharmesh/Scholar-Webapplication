@@ -35,9 +35,9 @@ export default function CursorGlow() {
   return (
     <div
       ref={glowRef}
-      className="fixed top-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none z-0 transition-opacity duration-700 opacity-0 filter blur-[100px] bg-gradient-to-tr from-brand-amber/15 via-brand-navy/10 to-brand-green/5"
+      className="fixed top-0 left-0 w-[450px] h-[450px] rounded-full pointer-events-none z-0 transition-opacity duration-700 opacity-0 filter blur-[120px] bg-gradient-to-tr from-[#6366f1]/15 via-[#3b82f6]/10 to-transparent"
       style={{
-        transform: 'translate3d(-400px, -400px, 0)',
+        transform: 'translate3d(-450px, -450px, 0)',
         willChange: 'transform',
       }}
     />
