@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light w-full max-w-full overflow-x-hidden">
-      <body className="antialiased relative bg-[#f7f9fa] text-[#1a2421] min-h-screen w-full max-w-full overflow-x-hidden">
+      <body className="antialiased relative bg-[#fcfbf9] text-[#2a302e] min-h-screen w-full max-w-full overflow-x-hidden">
         {/* Faint Film Grain Overlay */}
         <div className="noise-overlay" />
 

@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-purple: #6366f1;
-  --color-brand-purple-light: rgba(99, 102, 241, 0.08);
-  --color-brand-blue: #3b82f6;
-  --color-brand-blue-light: rgba(59, 130, 246, 0.08);
-  --color-brand-green: #10b981;
-  --color-brand-green-light: rgba(16, 185, 129, 0.08);
-  --color-brand-amber: #f59e0b;
-  --color-brand-amber-light: rgba(245, 158, 11, 0.08);
+  --color-brand-green: #3f6c5b;
+  --color-brand-green-light: rgba(63, 108, 91, 0.08);
+  --color-brand-purple: #8e7c93;
+  --color-brand-purple-light: rgba(142, 124, 147, 0.08);
+  --color-brand-blue: #4e7c8c;
+  --color-brand-blue-light: rgba(78, 124, 140, 0.08);
+  --color-brand-amber: #d49d6a;
+  --color-brand-amber-light: rgba(212, 157, 106, 0.08);
   
-  --color-canvas-bg: #f7f9fa;
-  --color-primary-charcoal: #1a2421;
-  --color-muted-slate: #5c6865;
-  --color-card-border: #e5e7eb;
-  --color-card-border-hover: #d1d5db;
-  --color-warning-terracotta: #e07a5f;
+  --color-canvas-bg: #fcfbf9;
+  --color-primary-charcoal: #2a302e;
+  --color-muted-slate: #6e7875;
+  --color-card-border: #e8e5df;
+  --color-card-border-hover: #dcd7ce;
+  --color-warning-terracotta: #d9745b;
   
   --animate-float-slow: float-slow 12s ease-in-out infinite;
   --animate-float-medium: float-medium 8s ease-in-out infinite;
@@ -52,9 +52,9 @@ html, body {
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
-  background-color: #f7f9fa;
-  color: #1a2421;
-  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  background-color: #fcfbf9;
+  color: #2a302e;
+  font-family: 'Outfit', 'Inter', -apple-system, system-ui, sans-serif;
   overflow-x: hidden !important;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -71,8 +71,8 @@ main, #__next, [data-reactroot], body > div {
 
 /* Custom Selection style */
 ::selection {
-  background: rgba(99, 102, 241, 0.15);
-  color: #6366f1;
+  background: rgba(63, 108, 91, 0.12);
+  color: #3f6c5b;
 }
 
 /* Scrollbar styling - premium light minimal */
@@ -81,42 +81,42 @@ main, #__next, [data-reactroot], body > div {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f7f9fa;
+  background: #fcfbf9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e5e7eb;
+  background: #e8e5df;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: #dcd7ce;
 }
 
 /* Frosted Glassmorphic Card panel */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid #e5e7eb;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  border: 1.5px solid #e8e5df;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01), inset 0 1px 1px rgba(255, 255, 255, 0.8);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .glass-panel-hover:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(99, 102, 241, 0.25);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 0 12px rgba(99, 102, 241, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(63, 108, 91, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02), 0 0 12px rgba(63, 108, 91, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
 }
 
 .text-gradient-purple-blue {
-  background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #3f6c5b 0%, #4e7c8c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-purple-pink {
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  background: linear-gradient(135deg, #3f6c5b 0%, #8e7c93 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -124,12 +124,12 @@ main, #__next, [data-reactroot], body > div {
 /* Premium low-opacity gray dots matrix canvas background pattern */
 .bg-dot-matrix {
   background-size: 28px 28px;
-  background-image: radial-gradient(#e5e7eb 1.2px, transparent 1.2px);
+  background-image: radial-gradient(#e8e5df 1.2px, transparent 1.2px);
 }
 
 /* Custom layout grid lines */
 .layout-grid-line {
-  background-color: #e5e7eb;
+  background-color: #e8e5df;
 }
 
 /* Faint Film Grain Overlay */

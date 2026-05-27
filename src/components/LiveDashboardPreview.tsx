@@ -112,24 +112,24 @@ export default function LiveDashboardPreview() {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto rounded-2xl border border-[#E5E7EB] bg-[#FFFFFF] shadow-[0_24px_80px_rgba(0,0,0,0.03)] overflow-hidden select-none">
+    <div className="w-full max-w-6xl mx-auto rounded-2xl border border-card-border bg-[#FFFFFF] shadow-[0_24px_80px_rgba(0,0,0,0.03)] overflow-hidden select-none">
       
       {/* Dashboard Top bar */}
-      <div className="flex items-center justify-between px-6 py-4 bg-[#F7F9FA] border-b border-[#E5E7EB]">
+      <div className="flex items-center justify-between px-6 py-4 bg-canvas-bg border-b border-card-border">
         <div className="flex items-center gap-3">
-          <div className="w-8.5 h-8.5 rounded-lg bg-[#6366F1] flex items-center justify-center shadow-sm">
+          <div className="w-8.5 h-8.5 rounded-lg bg-brand-green flex items-center justify-center shadow-sm">
             <Brain className="w-4.5 h-4.5 text-white" />
           </div>
           <div>
-            <h3 className="text-xs font-bold text-[#1A2421] leading-tight font-mono uppercase tracking-wider">ScholarOS Workspace</h3>
-            <span className="text-[9px] text-[#5C6865]/70 font-mono">Session Core: Spring 2026</span>
+            <h3 className="text-xs font-bold text-primary-charcoal leading-tight font-mono uppercase tracking-wider">ScholarOS Workspace</h3>
+            <span className="text-[9px] text-muted-slate/70 font-mono">Session Core: Spring 2026</span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 bg-brand-green/10 px-3 py-1.5 rounded-full border border-brand-green/20 shadow-sm">
+          <div className="hidden sm:flex items-center gap-2 bg-brand-green-light px-3 py-1.5 rounded-full border border-brand-green/20 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
-            <span className="text-[9px] text-[#10b981] font-bold font-mono">Neural Sync: Live</span>
+            <span className="text-[9px] text-brand-green font-bold font-mono">Neural Sync: Live</span>
           </div>
         </div>
       </div>
@@ -138,18 +138,18 @@ export default function LiveDashboardPreview() {
       <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[560px]">
         
         {/* LEFT SIDEBAR: Subjects & Exams (Col span 3) */}
-        <div className="lg:col-span-3 border-r border-[#E5E7EB] p-4 bg-[#F7F9FA]/40">
+        <div className="lg:col-span-3 border-r border-card-border p-4 bg-canvas-bg/40">
           
           <div className="space-y-4">
             
             {/* Active Subject Selector List */}
             <div>
               <div className="flex items-center justify-between mb-2 px-1">
-                <span className="text-[9px] font-extrabold text-[#5C6865]/60 uppercase tracking-widest block font-mono">Active Courses</span>
+                <span className="text-[9px] font-extrabold text-muted-slate/60 uppercase tracking-widest block font-mono">Active Courses</span>
                 {showPracticeMode && (
                   <button 
                     onClick={() => setShowPracticeMode(false)}
-                    className="text-[9px] font-bold text-[#6366F1] hover:underline flex items-center gap-0.5 font-mono cursor-pointer"
+                    className="text-[9px] font-bold text-brand-green hover:underline flex items-center gap-0.5 font-mono cursor-pointer"
                   >
                     <ArrowLeft className="w-2.5 h-2.5" />
                     Console
@@ -160,11 +160,11 @@ export default function LiveDashboardPreview() {
                 {Object.values(subjects).map((subj) => {
                   const isSelected = selectedSubjectId === subj.id;
                   
-                  let activeBorder = 'border-[#E5E7EB] hover:border-brand-purple/40 hover:bg-[#F7F9FA] bg-transparent text-[#5C6865]';
+                  let activeBorder = 'border-card-border hover:border-brand-purple/40 hover:bg-canvas-bg bg-transparent text-muted-slate';
                   if (isSelected) {
-                    if (subj.color === 'amber') activeBorder = 'border-[#6366F1] bg-[#6366F1]/5 text-[#1A2421] shadow-sm';
-                    if (subj.color === 'navy') activeBorder = 'border-[#3b82f6] bg-[#3b82f6]/5 text-[#1A2421] shadow-sm';
-                    if (subj.color === 'green') activeBorder = 'border-[#10b981] bg-[#10b981]/5 text-[#1A2421] shadow-sm';
+                    if (subj.color === 'amber') activeBorder = 'border-brand-amber bg-brand-amber-light text-primary-charcoal shadow-sm';
+                    if (subj.color === 'navy') activeBorder = 'border-brand-blue bg-brand-blue-light text-primary-charcoal shadow-sm';
+                    if (subj.color === 'green') activeBorder = 'border-brand-green bg-brand-green-light text-primary-charcoal shadow-sm';
                   }
 
                   return (
@@ -174,12 +174,12 @@ export default function LiveDashboardPreview() {
                       className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between group cursor-pointer ${activeBorder}`}
                     >
                       <div className="space-y-0.5">
-                        <span className="text-[9px] font-mono text-[#5C6865]/60 font-bold">{subj.code}</span>
-                        <h4 className="text-xs font-bold truncate max-w-[130px] text-[#1A2421] group-hover:text-black transition-colors">{subj.name}</h4>
+                        <span className="text-[9px] font-mono text-muted-slate/60 font-bold">{subj.code}</span>
+                        <h4 className="text-xs font-bold truncate max-w-[130px] text-primary-charcoal group-hover:text-brand-green transition-colors">{subj.name}</h4>
                       </div>
-                      <div className="w-8.5 h-8.5 rounded-full border border-[#E5E7EB] flex items-center justify-center bg-[#FFFFFF] shadow-sm shrink-0">
+                      <div className="w-8.5 h-8.5 rounded-full border border-card-border flex items-center justify-center bg-[#FFFFFF] shadow-sm shrink-0">
                         <span className={`text-[10px] font-mono font-black ${
-                          subj.color === 'amber' ? 'text-[#6366F1]' : subj.color === 'navy' ? 'text-[#3b82f6]' : 'text-[#10b981]'
+                          subj.color === 'amber' ? 'text-brand-amber' : subj.color === 'navy' ? 'text-brand-blue' : 'text-brand-green'
                         }`}>
                           {subj.mastery}%
                         </span>
@@ -192,18 +192,18 @@ export default function LiveDashboardPreview() {
 
             {/* Weak Areas list */}
             <div>
-              <span className="text-[9px] font-extrabold text-[#5C6865]/60 uppercase tracking-widest block mb-2 px-1">Active Weak Spots</span>
+              <span className="text-[9px] font-extrabold text-muted-slate/60 uppercase tracking-widest block mb-2 px-1">Active Weak Spots</span>
               <div className="space-y-2">
                 {activeSubject.weakTopics.map((topic, index) => (
-                  <div key={index} className="p-2.5 rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] flex items-center justify-between shadow-sm">
+                  <div key={index} className="p-2.5 rounded-xl bg-[#FFFFFF] border border-card-border flex items-center justify-between shadow-sm">
                     <div className="space-y-0.5 max-w-[140px]">
-                      <h5 className="text-[11px] font-bold text-[#1A2421]/90 truncate">{topic.name}</h5>
-                      <span className="text-[9px] font-mono text-[#5C6865]/70">Weight: {topic.weight}%</span>
+                      <h5 className="text-[11px] font-bold text-primary-charcoal/90 truncate">{topic.name}</h5>
+                      <span className="text-[9px] font-mono text-muted-slate/70">Weight: {topic.weight}%</span>
                     </div>
                     <span className={`text-[8px] font-extrabold font-mono px-2 py-0.5 rounded-full uppercase ${
                       topic.status === 'critical' 
-                        ? 'bg-[#E07A5F]/10 border border-[#E07A5F]/20 text-[#E07A5F]' 
-                        : 'bg-[#f59e0b]/10 border border-[#f59e0b]/20 text-[#f59e0b]'
+                        ? 'bg-warning-terracotta/10 border border-warning-terracotta/20 text-warning-terracotta' 
+                        : 'bg-brand-amber-light border border-brand-amber/20 text-brand-amber'
                     }`}>
                       {topic.status}
                     </span>
@@ -213,12 +213,12 @@ export default function LiveDashboardPreview() {
             </div>
 
             {/* Upcoming Exam Card */}
-            <div className="pt-2 border-t border-[#E5E7EB]">
-              <div className="p-3 bg-[#FFFFFF] border border-[#E5E7EB] rounded-xl flex items-center gap-2.5 shadow-sm">
-                <Clock className="w-4 h-4 text-[#f59e0b] shrink-0 animate-pulse" />
+            <div className="pt-2 border-t border-card-border">
+              <div className="p-3 bg-[#FFFFFF] border border-card-border rounded-xl flex items-center gap-2.5 shadow-sm">
+                <Clock className="w-4 h-4 text-brand-amber shrink-0 animate-pulse" />
                 <div>
-                  <span className="text-[8px] text-[#5C6865]/70 block uppercase font-mono">Exam Target</span>
-                  <span className="text-xs font-bold text-[#1A2421]">{activeSubject.examDate}</span>
+                  <span className="text-[8px] text-muted-slate/70 block uppercase font-mono">Exam Target</span>
+                  <span className="text-xs font-bold text-primary-charcoal">{activeSubject.examDate}</span>
                 </div>
               </div>
             </div>
@@ -241,26 +241,26 @@ export default function LiveDashboardPreview() {
               <div className="space-y-6">
                 
                 {/* Practice Mode Header */}
-                <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-4">
+                <div className="flex items-center justify-between border-b border-card-border pb-4">
                   <div className="flex items-center gap-3">
                     <button 
                       onClick={() => setShowPracticeMode(false)}
-                      className="p-1.5 rounded-xl border border-[#E5E7EB] hover:bg-[#F7F9FA] text-[#5C6865] hover:text-[#1A2421] transition-colors cursor-pointer"
+                      className="p-1.5 rounded-xl border border-card-border hover:bg-canvas-bg text-muted-slate hover:text-primary-charcoal transition-colors cursor-pointer"
                       aria-label="Back to Dashboard"
                     >
                       <ArrowLeft className="w-4 h-4" />
                     </button>
                     <div>
-                      <span className="text-[9px] font-mono font-bold uppercase text-[#6366F1] tracking-wider">Neural Practice Engine</span>
-                      <h2 className="text-lg font-extrabold text-[#1A2421] mt-0.5 font-sans">
+                      <span className="text-[9px] font-mono font-bold uppercase text-brand-green tracking-wider">Neural Practice Engine</span>
+                      <h2 className="text-lg font-extrabold text-primary-charcoal mt-0.5 font-sans">
                         Predicted Exam Questions — {activeSubject.name}
                       </h2>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[9px] text-[#5C6865]/70 font-mono">Syllabus-Aligned</span>
-                    <span className="text-xs font-bold text-[#6366F1] font-mono flex items-center gap-1">
-                      <Award className="w-3.5 h-3.5 text-[#f59e0b]" />
+                    <span className="text-[9px] text-muted-slate/70 font-mono">Syllabus-Aligned</span>
+                    <span className="text-xs font-bold text-brand-green font-mono flex items-center gap-1">
+                      <Award className="w-3.5 h-3.5 text-brand-amber" />
                       100% Mapped
                     </span>
                   </div>
@@ -271,21 +271,21 @@ export default function LiveDashboardPreview() {
                   {activeSubject.practiceQuestions.map((q, idx) => {
                     const isRevealed = !!revealedAnswers[q.id];
                     return (
-                      <div key={q.id} className="p-5 border border-[#E5E7EB] bg-[#FFFFFF] shadow-sm space-y-4 rounded-2xl">
+                      <div key={q.id} className="p-5 border border-card-border bg-[#FFFFFF] shadow-sm space-y-4 rounded-2xl">
                         
                         {/* Question Metadata */}
-                        <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-2.5">
-                          <span className="text-[9px] font-bold font-mono text-[#6366F1] flex items-center gap-1">
-                            <HelpCircle className="w-3.5 h-3.5 text-[#f59e0b] animate-pulse" />
+                        <div className="flex items-center justify-between border-b border-card-border pb-2.5">
+                          <span className="text-[9px] font-bold font-mono text-brand-green flex items-center gap-1">
+                            <HelpCircle className="w-3.5 h-3.5 text-brand-amber animate-pulse" />
                             QUESTION {idx + 1} • {q.section}
                           </span>
-                          <span className="text-[9px] font-bold font-mono text-[#6366F1] px-2.5 py-0.8 rounded-full bg-[#6366F1]/10 border border-[#6366F1]/20">
+                          <span className="text-[9px] font-bold font-mono text-brand-green px-2.5 py-0.8 rounded-full bg-brand-green-light border border-brand-green/20">
                             {q.weight}% Exam Weight
                           </span>
                         </div>
 
                         {/* Question Text */}
-                        <p className="text-xs sm:text-sm font-extrabold text-[#1A2421] leading-relaxed font-sans">
+                        <p className="text-xs sm:text-sm font-extrabold text-primary-charcoal leading-relaxed font-sans">
                           {q.question}
                         </p>
 
@@ -293,16 +293,16 @@ export default function LiveDashboardPreview() {
                         <div>
                           <button
                             onClick={() => toggleAnswer(q.id)}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold font-mono border border-[#E5E7EB] hover:bg-[#F7F9FA] text-[#5C6865] hover:text-[#1A2421] transition-all cursor-pointer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold font-mono border border-card-border hover:bg-canvas-bg text-muted-slate hover:text-primary-charcoal transition-all cursor-pointer"
                           >
                             {isRevealed ? (
                               <>
-                                <EyeOff className="w-3.5 h-3.5 text-[#6366F1]" />
+                                <EyeOff className="w-3.5 h-3.5 text-brand-green" />
                                 <span>Hide Answer Key</span>
                               </>
                             ) : (
                               <>
-                                <Eye className="w-3.5 h-3.5 text-[#6366F1]" />
+                                <Eye className="w-3.5 h-3.5 text-brand-green" />
                                 <span>Reveal Expected Answer Key</span>
                               </>
                             )}
@@ -317,24 +317,24 @@ export default function LiveDashboardPreview() {
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.2 }}
-                              className="overflow-hidden space-y-3 pt-3 border-t border-[#E5E7EB]"
+                              className="overflow-hidden space-y-3 pt-3 border-t border-card-border"
                             >
                               <div className="space-y-1">
                                 <span className="text-[9px] font-bold uppercase tracking-wider font-mono text-brand-green flex items-center gap-1">
-                                  <CheckCircle className="w-3 h-3" />
+                                  <CheckCircle className="w-3.5 h-3.5" />
                                   Expected Textbook Grading Matrix
                                 </span>
-                                <p className="text-xs text-[#1A2421]/90 leading-relaxed font-sans p-3.5 bg-[#F7F9FA] border border-[#E5E7EB] rounded-xl">
+                                <p className="text-xs text-primary-charcoal/90 leading-relaxed font-sans p-3.5 bg-canvas-bg border border-card-border rounded-xl">
                                   {q.expectedAnswer}
                                 </p>
                               </div>
 
                               {/* Warning tips - Terracotta */}
-                              <div className="p-3.5 bg-[#E07A5F]/5 border border-[#E07A5F]/20 text-[#E07A5F] rounded-xl space-y-1">
+                              <div className="p-3.5 bg-warning-terracotta/5 border border-warning-terracotta/20 text-warning-terracotta rounded-xl space-y-1">
                                 <span className="text-[9px] font-bold uppercase tracking-wider font-mono flex items-center gap-1">
                                   ⚠️ SYLLABUS SAFEGUARD ADVICE
                                 </span>
-                                <p className="text-[11px] text-[#1A2421]/80 leading-normal font-sans">
+                                <p className="text-[11px] text-primary-charcoal/80 leading-normal font-sans">
                                   {q.consensustip}
                                 </p>
                               </div>
@@ -350,14 +350,14 @@ export default function LiveDashboardPreview() {
               </div>
 
               {/* Practice Footer */}
-              <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between text-[9px] text-[#5C6865]/60 font-mono mt-6">
+              <div className="pt-4 border-t border-card-border flex items-center justify-between text-[9px] text-muted-slate/60 font-mono mt-6">
                 <span className="flex items-center gap-1.5">
-                  <Bookmark className="w-3.5 h-3.5 text-[#6366F1]" />
+                  <Bookmark className="w-3.5 h-3.5 text-brand-green" />
                   Sourced from standard collegiate outlines
                 </span>
                 <button 
                   onClick={() => setShowPracticeMode(false)}
-                  className="text-[#6366F1] font-bold hover:underline cursor-pointer"
+                  className="text-brand-green font-bold hover:underline cursor-pointer"
                 >
                   Return to Dashboard
                 </button>
@@ -371,23 +371,23 @@ export default function LiveDashboardPreview() {
                 <div className="space-y-5">
                   
                   {/* Subject Title & Tab Toggle */}
-                  <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-4">
+                  <div className="flex items-center justify-between border-b border-card-border pb-4">
                     <div>
-                      <span className="text-[9px] font-mono font-bold uppercase text-[#5C6865]/60 tracking-wider">ACTIVE SYLLABUS UNIT</span>
-                      <h2 className="text-lg font-extrabold text-[#1A2421] mt-0.5 flex items-center gap-2 font-sans">
+                      <span className="text-[9px] font-mono font-bold uppercase text-muted-slate/60 tracking-wider">ACTIVE SYLLABUS UNIT</span>
+                      <h2 className="text-lg font-extrabold text-primary-charcoal mt-0.5 flex items-center gap-2 font-sans">
                         {activeSubject.name}
                         <span className={`w-2 h-2 rounded-full ${
-                          activeSubject.color === 'amber' ? 'bg-[#6366F1]' : activeSubject.color === 'navy' ? 'bg-[#3b82f6]' : 'bg-[#10b981]'
+                          activeSubject.color === 'amber' ? 'bg-brand-amber' : activeSubject.color === 'navy' ? 'bg-brand-blue' : 'bg-brand-green'
                         }`} />
                       </h2>
                     </div>
                     
                     {/* Visual Mode Toggles */}
-                    <div className="flex items-center gap-1 p-0.5 bg-[#F7F9FA] border border-[#E5E7EB] rounded-lg">
+                    <div className="flex items-center gap-1 p-0.5 bg-canvas-bg border border-card-border rounded-lg">
                       <button 
                         onClick={() => setWorkspaceTab('graph')}
                         className={`p-1.5 rounded text-[10px] font-bold font-mono transition-all flex items-center gap-1 cursor-pointer ${
-                          workspaceTab === 'graph' ? 'bg-[#6366F1] text-white shadow-sm' : 'text-[#5C6865]/70 hover:text-[#1A2421]'
+                          workspaceTab === 'graph' ? 'bg-brand-green text-white shadow-sm' : 'text-muted-slate/70 hover:text-primary-charcoal'
                         }`}
                         title="Interactive Graph"
                       >
@@ -396,7 +396,7 @@ export default function LiveDashboardPreview() {
                       <button 
                         onClick={() => setWorkspaceTab('directory')}
                         className={`p-1.5 rounded text-[10px] font-bold font-mono transition-all flex items-center gap-1 cursor-pointer ${
-                          workspaceTab === 'directory' ? 'bg-[#6366F1] text-white shadow-sm' : 'text-[#5C6865]/70 hover:text-[#1A2421]'
+                          workspaceTab === 'directory' ? 'bg-brand-green text-white shadow-sm' : 'text-muted-slate/70 hover:text-primary-charcoal'
                         }`}
                         title="Claims Directory"
                       >
@@ -410,38 +410,38 @@ export default function LiveDashboardPreview() {
                     /* SPATIAL NEURAL GRAPH CANVAS */
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-bold uppercase text-[#5C6865]/60 tracking-widest font-mono">Interactive Neural Concept Map</span>
-                        <span className="text-[8.5px] font-mono text-[#5C6865]/70">Click nodes to stream AI insights</span>
+                        <span className="text-[9px] font-bold uppercase text-muted-slate/60 tracking-widest font-mono">Interactive Neural Concept Map</span>
+                        <span className="text-[8.5px] font-mono text-muted-slate/70">Click nodes to stream AI insights</span>
                       </div>
 
                       {/* SVG Spatial Canvas */}
-                      <div className="relative h-64 border border-[#E5E7EB] bg-[#F7F9FA] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                      <div className="relative h-64 border border-card-border bg-canvas-bg rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
                         <div className="absolute inset-0 bg-dot-matrix opacity-60 pointer-events-none" />
 
                         {/* Connection Paths */}
                         <svg className="w-full h-full absolute inset-0">
-                          <line x1="20%" y1="30%" x2="50%" y2="20%" stroke={selectedNode?.id === 'n2' || selectedNode?.id === 'n1' ? '#6366F1' : '#E5E7EB'} strokeWidth="1.5" className="transition-all duration-300" />
-                          <line x1="50%" y1="20%" x2="80%" y2="35%" stroke={selectedNode?.id === 'n3' || selectedNode?.id === 'n2' ? '#6366F1' : '#E5E7EB'} strokeWidth="1.5" className="transition-all duration-300" />
-                          <line x1="20%" y1="30%" x2="35%" y2="75%" stroke={selectedNode?.id === 'n4' || selectedNode?.id === 'n1' ? '#6366F1' : '#E5E7EB'} strokeWidth="1.5" />
-                          <line x1="55%" y1="65%" x2="65%" y2="70%" stroke="#E5E7EB" strokeWidth="1.5" />
-                          <line x1="35%" y1="75%" x2="65%" y2="70%" stroke={selectedNode?.id === 'n5' || selectedNode?.id === 'n4' ? '#6366F1' : '#E5E7EB'} strokeWidth="1.5" />
+                          <line x1="20%" y1="30%" x2="50%" y2="20%" stroke={selectedNode?.id === 'n2' || selectedNode?.id === 'n1' ? '#3f6c5b' : '#e8e5df'} strokeWidth="1.5" className="transition-all duration-300" />
+                          <line x1="50%" y1="20%" x2="80%" y2="35%" stroke={selectedNode?.id === 'n3' || selectedNode?.id === 'n2' ? '#3f6c5b' : '#e8e5df'} strokeWidth="1.5" className="transition-all duration-300" />
+                          <line x1="20%" y1="30%" x2="35%" y2="75%" stroke={selectedNode?.id === 'n4' || selectedNode?.id === 'n1' ? '#3f6c5b' : '#e8e5df'} strokeWidth="1.5" />
+                          <line x1="55%" y1="65%" x2="65%" y2="70%" stroke="#e8e5df" strokeWidth="1.5" />
+                          <line x1="35%" y1="75%" x2="65%" y2="70%" stroke={selectedNode?.id === 'n5' || selectedNode?.id === 'n4' ? '#3f6c5b' : '#e8e5df'} strokeWidth="1.5" />
                         </svg>
 
                         {/* Nodes Loop */}
                         {activeGraphNodes.map((node) => {
                           const isSelected = selectedNode?.id === node.id;
                           
-                          let ringColor = 'border-[#E5E7EB] text-[#5C6865] bg-[#FFFFFF]';
+                          let ringColor = 'border-card-border text-muted-slate bg-[#FFFFFF]';
                           if (node.status === 'mastered') ringColor = 'border-brand-green bg-brand-green-light text-brand-green shadow-sm animate-pulse-slow';
-                          if (node.status === 'weak') ringColor = 'border-[#E07A5F] bg-[#E07A5F]/15 text-[#E07A5F] shadow-sm animate-pulse';
-                          if (node.status === 'progress') ringColor = 'border-[#3b82f6] bg-brand-blue-light text-[#3b82f6] shadow-sm';
+                          if (node.status === 'weak') ringColor = 'border-warning-terracotta bg-warning-terracotta/10 text-warning-terracotta shadow-sm animate-pulse';
+                          if (node.status === 'progress') ringColor = 'border-brand-blue bg-brand-blue-light text-brand-blue shadow-sm';
 
                           return (
                             <button
                               key={node.id}
                               onClick={() => setSelectedNode(node)}
                               className={`absolute px-2.5 py-1 rounded-full border text-[9.5px] font-extrabold font-mono transition-all hover:scale-[1.08] cursor-pointer ${ringColor} ${
-                                isSelected ? 'ring-2 ring-[#6366F1] scale-[1.05] border-[#6366F1] z-20 shadow-sm' : 'z-10'
+                                isSelected ? 'ring-2 ring-brand-green scale-[1.05] border-brand-green z-20 shadow-sm' : 'z-10'
                               }`}
                               style={{ left: `${node.x}%`, top: `${node.y}%` }}
                             >
@@ -452,24 +452,24 @@ export default function LiveDashboardPreview() {
                       </div>
 
                       {/* Tooltip Dynamic Details */}
-                      <div className="min-h-[85px] p-4 bg-[#F7F9FA] border border-[#E5E7EB] rounded-2xl relative overflow-hidden flex flex-col justify-center shadow-sm">
+                      <div className="min-h-[85px] p-4 bg-canvas-bg border border-card-border rounded-2xl relative overflow-hidden flex flex-col justify-center shadow-sm">
                         {selectedNode ? (
                           <div className="space-y-1.5">
                             <div className="flex items-center justify-between">
-                              <span className="text-[9px] font-mono font-bold text-[#6366F1] flex items-center gap-1">
-                                <Zap className="w-3.5 h-3.5 text-[#f59e0b] animate-pulse" />
+                              <span className="text-[9px] font-mono font-bold text-brand-green flex items-center gap-1">
+                                <Zap className="w-3.5 h-3.5 text-brand-amber animate-pulse" />
                                 {selectedNode.name.toUpperCase()} INSIGHTS
                               </span>
-                              <span className="text-[9px] font-mono text-[#5C6865]/70">Mastered Delta: {selectedNode.mastery}%</span>
+                              <span className="text-[9px] font-mono text-muted-slate/70">Mastered Delta: {selectedNode.mastery}%</span>
                             </div>
-                            <p className="text-[11.5px] text-[#1A2421] leading-relaxed font-sans min-h-[30px]">
+                            <p className="text-[11.5px] text-primary-charcoal leading-relaxed font-sans min-h-[30px]">
                               {streamingText}
-                              {isStreaming && <span className="w-1.5 h-3 bg-[#6366F1] inline-block animate-pulse ml-0.5" />}
+                              {isStreaming && <span className="w-1.5 h-3 bg-brand-green inline-block animate-pulse ml-0.5" />}
                             </p>
                           </div>
                         ) : (
-                          <div className="text-center text-[10px] text-[#5C6865]/70 font-mono py-2 flex flex-col items-center gap-1.5">
-                            <Network className="w-5 h-5 text-[#5C6865]/35" />
+                          <div className="text-center text-[10px] text-muted-slate/70 font-mono py-2 flex flex-col items-center gap-1.5">
+                            <Network className="w-5 h-5 text-muted-slate/35" />
                             <span>Select a neural concept node above to stream syllabus-aware study summaries.</span>
                           </div>
                         )}
@@ -480,12 +480,12 @@ export default function LiveDashboardPreview() {
                     <div className="space-y-4">
                       
                       {/* 1. AI Syllabus Insights */}
-                      <div className="p-4 rounded-xl border border-[#6366F1]/20 bg-[#6366F1]/5 relative overflow-hidden space-y-2">
-                        <div className="flex items-center gap-2 text-[#6366F1]">
+                      <div className="p-4 rounded-xl border border-brand-green/20 bg-brand-green-light relative overflow-hidden space-y-2">
+                        <div className="flex items-center gap-2 text-brand-green">
                           <Sparkles className="w-4 h-4" />
                           <h4 className="text-[9px] font-bold uppercase tracking-wider font-mono">Platform Concept Study Insight</h4>
                         </div>
-                        <p className="text-xs text-[#1A2421]/90 leading-relaxed font-sans">
+                        <p className="text-xs text-primary-charcoal/90 leading-relaxed font-sans font-medium">
                           &quot;{activeSubject.aiInsight}&quot;
                         </p>
                       </div>
@@ -493,10 +493,10 @@ export default function LiveDashboardPreview() {
                       {/* 2. Fact checking verifications */}
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <h4 className="text-[9px] font-bold uppercase text-[#5C6865]/60 tracking-widest font-mono">Real-Time Web Claim Overlay</h4>
+                          <h4 className="text-[9px] font-bold uppercase text-muted-slate/60 tracking-widest font-mono">Real-Time Web Claim Overlay</h4>
                           <button 
                             onClick={() => setShowPracticeMode(true)}
-                            className="text-[9px] font-bold text-[#6366F1] hover:underline font-mono cursor-pointer"
+                            className="text-[9px] font-bold text-brand-green hover:underline font-mono cursor-pointer"
                           >
                             Try Practice Questions &rarr;
                           </button>
@@ -508,26 +508,26 @@ export default function LiveDashboardPreview() {
                               key={index}
                               className={`p-3.5 rounded-xl border flex items-start gap-3 transition-colors shadow-sm ${
                                 claim.status === 'verified'
-                                  ? 'border-[#10b981]/25 bg-brand-green-light text-brand-green'
-                                  : 'border-[#E07A5F]/20 bg-[#E07A5F]/5 text-[#E07A5F]'
+                                  ? 'border-brand-green/20 bg-brand-green-light text-brand-green'
+                                  : 'border-warning-terracotta/20 bg-warning-terracotta/5 text-warning-terracotta'
                               }`}
                             >
                               {claim.status === 'verified' ? (
                                 <CheckCircle className="w-4 h-4 text-brand-green shrink-0 mt-0.5" />
                               ) : (
-                                <AlertCircle className="w-4 h-4 text-[#E07A5F] shrink-0 mt-0.5 animate-pulse" />
+                                <AlertCircle className="w-4 h-4 text-warning-terracotta shrink-0 mt-0.5 animate-pulse" />
                               )}
                               <div className="space-y-1">
-                                <p className="text-xs font-extrabold text-[#1A2421]/95 leading-normal font-sans">
+                                <p className="text-xs font-extrabold text-primary-charcoal/95 leading-normal font-sans">
                                   &quot;{claim.text}&quot;
                                 </p>
                                 <div className="flex items-center gap-1.5">
                                   <span className={`text-[8px] font-extrabold font-mono px-1.5 py-0.2 rounded ${
-                                    claim.status === 'verified' ? 'bg-[#10b981]/10 border border-[#10b981]/20 text-[#10b981]' : 'bg-[#E07A5F]/10 border border-[#E07A5F]/20 text-[#E07A5F]'
+                                    claim.status === 'verified' ? 'bg-brand-green-light border border-brand-green/20 text-brand-green' : 'bg-warning-terracotta/10 border border-warning-terracotta/20 text-warning-terracotta'
                                   }`}>
                                     {claim.status === 'verified' ? 'VERIFIED' : 'TEXTBOOK WARNING'}
                                   </span>
-                                  <span className="text-[9px] font-mono text-[#5C6865]/60">{claim.consensus}</span>
+                                  <span className="text-[9px] font-mono text-muted-slate/60">{claim.consensus}</span>
                                 </div>
                               </div>
                             </div>
@@ -537,12 +537,12 @@ export default function LiveDashboardPreview() {
 
                       {/* 3. Related conceptual chips */}
                       <div className="space-y-2">
-                        <span className="text-[9px] font-bold text-[#5C6865]/60 uppercase tracking-wider block font-mono">Course Concepts Index</span>
+                        <span className="text-[9px] font-bold text-muted-slate/60 uppercase tracking-wider block font-mono">Course Concepts Index</span>
                         <div className="flex flex-wrap gap-2">
                           {activeSubject.concepts.map((concept, idx) => (
-                            <div key={idx} className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FFFFFF] border border-[#E5E7EB] text-[9px] font-bold text-[#5C6865] hover:border-[#6366F1] hover:text-[#1A2421] transition-all cursor-pointer font-mono shadow-sm">
+                            <div key={idx} className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FFFFFF] border border-card-border text-[9px] font-bold text-muted-slate hover:border-brand-green hover:text-primary-charcoal transition-all cursor-pointer font-mono shadow-sm">
                               <span>{concept}</span>
-                              <ArrowUpRight className="w-3 h-3 text-[#5C6865]/50" />
+                              <ArrowUpRight className="w-3 h-3 text-muted-slate/50" />
                             </div>
                           ))}
                         </div>
@@ -553,9 +553,9 @@ export default function LiveDashboardPreview() {
 
                 </div>
 
-                <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between text-[9px] text-[#5C6865]/60 font-mono">
+                <div className="pt-4 border-t border-card-border flex items-center justify-between text-[9px] text-muted-slate/60 font-mono">
                   <span className="flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5 text-[#6366F1]" />
+                    <Layers className="w-3.5 h-3.5 text-brand-green" />
                     Syllabus Indexes Synced
                   </span>
                   <span>Target base: Core standard college text keys</span>
@@ -563,18 +563,18 @@ export default function LiveDashboardPreview() {
               </div>
 
               {/* RIGHT SIDEBAR: Exam relevance & revision (Col span 3) */}
-              <div className="lg:col-span-3 border-l border-[#E5E7EB] p-4 bg-[#F7F9FA]/40 flex flex-col justify-between">
+              <div className="lg:col-span-3 border-l border-card-border p-4 bg-canvas-bg/40 flex flex-col justify-between">
                 <div className="space-y-6">
                   {/* Exam Relevance dial */}
-                  <div className="p-3.5 bg-[#FFFFFF] border border-[#E5E7EB] rounded-xl space-y-3 text-center shadow-sm">
-                    <span className="text-[9px] font-bold text-[#5C6865]/60 uppercase tracking-widest block font-mono">Exam Relevance</span>
+                  <div className="p-3.5 bg-[#FFFFFF] border border-card-border rounded-xl space-y-3 text-center shadow-sm">
+                    <span className="text-[9px] font-bold text-muted-slate/60 uppercase tracking-widest block font-mono">Exam Relevance</span>
                     <div className="relative w-28 h-28 mx-auto flex items-center justify-center">
                       
                       {/* SVG Circle indicator */}
                       <svg className="w-full h-full transform -rotate-90">
-                        <circle cx="56" cy="56" r="46" fill="transparent" stroke="#F7F9FA" strokeWidth="6" />
+                        <circle cx="56" cy="56" r="46" fill="transparent" stroke="#e8e5df" strokeWidth="6" />
                         <circle cx="56" cy="56" r="46" fill="transparent" 
-                          stroke={activeSubject.color === 'amber' ? '#6366F1' : activeSubject.color === 'navy' ? '#3b82f6' : '#10b981'} 
+                          stroke={activeSubject.color === 'amber' ? '#d49d6a' : activeSubject.color === 'navy' ? '#4e7c8c' : '#3f6c5b'} 
                           strokeWidth="6" 
                           strokeDasharray={`${2 * Math.PI * 46}`} 
                           strokeDashoffset={`${2 * Math.PI * 46 * (1 - activeSubject.relevance / 100)}`}
@@ -583,29 +583,29 @@ export default function LiveDashboardPreview() {
                       </svg>
                       
                       <div className="absolute flex flex-col items-center">
-                        <span className="text-base font-extrabold text-[#1A2421] font-mono leading-none">{activeSubject.relevance}%</span>
-                        <span className="text-[8px] font-bold font-mono text-[#5C6865]/70 uppercase mt-0.5">Readiness</span>
+                        <span className="text-base font-extrabold text-primary-charcoal font-mono leading-none">{activeSubject.relevance}%</span>
+                        <span className="text-[8px] font-bold font-mono text-muted-slate/70 uppercase mt-0.5">Readiness</span>
                       </div>
                     </div>
-                    <p className="text-[9px] text-[#5C6865]/60 leading-normal font-mono">
+                    <p className="text-[9px] text-muted-slate/60 leading-normal font-mono">
                       High-Priority Exam Target Unit
                     </p>
                   </div>
 
                   {/* Confidence Score */}
-                  <div className="p-3 bg-[#FFFFFF] border border-[#E5E7EB] rounded-xl space-y-1 shadow-sm">
-                    <span className="text-[8px] text-[#5C6865]/70 font-mono uppercase block">Syllabus Consensus</span>
+                  <div className="p-3 bg-[#FFFFFF] border border-card-border rounded-xl space-y-1 shadow-sm">
+                    <span className="text-[8px] text-muted-slate/70 font-mono uppercase block">Syllabus Consensus</span>
                     <div className="flex items-center gap-1.5">
                       <TrendingUp className="w-4 h-4 text-brand-green" />
-                      <span className="text-[10px] font-bold text-[#1A2421]/90 font-mono">{activeSubject.confidence}% Agreed Matrix</span>
+                      <span className="text-[10px] font-bold text-primary-charcoal/90 font-mono">{activeSubject.confidence}% Agreed Matrix</span>
                     </div>
                   </div>
 
                   {/* Suggested Revision plan */}
                   <div className="space-y-2">
-                    <span className="text-[9px] font-extrabold text-[#5C6865]/60 uppercase tracking-widest block px-1 font-mono">AI Guide Instruction</span>
-                    <div className="p-3.5 rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] text-[11px] text-[#5C6865] leading-relaxed font-sans flex items-start gap-2 shadow-sm">
-                      <Bookmark className="w-3.5 h-3.5 text-[#6366F1] shrink-0 mt-0.5 animate-pulse" />
+                    <span className="text-[9px] font-extrabold text-muted-slate/60 uppercase tracking-widest block px-1 font-mono">AI Guide Instruction</span>
+                    <div className="p-3.5 rounded-xl border border-card-border bg-[#FFFFFF] text-[11px] text-muted-slate leading-relaxed font-sans flex items-start gap-2 shadow-sm">
+                      <Bookmark className="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5 animate-pulse" />
                       <span>&quot;{activeSubject.revisionText}&quot;</span>
                     </div>
                   </div>
@@ -613,9 +613,9 @@ export default function LiveDashboardPreview() {
 
                 <button 
                   onClick={() => setShowPracticeMode(true)}
-                  className="w-full py-2.5 rounded-xl text-[10px] font-bold bg-[#6366F1] hover:bg-[#6366F1]/90 text-white shadow-sm transition-all font-mono mt-4 flex items-center justify-center gap-1.5 group cursor-pointer"
+                  className="w-full py-2.5 rounded-xl text-[10px] font-bold bg-brand-green hover:bg-brand-green/90 text-white shadow-sm transition-all font-mono mt-4 flex items-center justify-center gap-1.5 group cursor-pointer"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-[#f59e0b] animate-pulse" />
+                  <BookOpen className="w-3.5 h-3.5 text-brand-amber animate-pulse" />
                   <span>Review Practice Questions</span>
                   <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
                 </button>
